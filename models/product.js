@@ -5,9 +5,13 @@ const productSchema = new Schema({
     name:String,
     price:Number,
     inStock:Boolean,
-    description:String
+    description:String,
+    noOfSales:Number,
+    noOfReturns:Number
 });
+
 
 
 const Product = mongoose.model('Product', productSchema);
 export default Product;
+
