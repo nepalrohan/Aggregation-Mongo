@@ -168,6 +168,9 @@ export const getProductByCategory = async (req, res) => {
   }
 };
 
+
+
+
 export const detailedAnalyticsforproduct = async (req, res) => {
   try {
     const analyticsofProduct = await Product.aggregate([
