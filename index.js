@@ -17,7 +17,7 @@ import imageRoute from './routes/imageRoute.js'
 
 
 
-mongoose.connect(database_url).then(res=>{
+mongoose.connect(process.env.database_url).then(res=>{
     console.log('Database connected successfully')
 }).catch(err=>console.log('Error during database connection', err))
 
