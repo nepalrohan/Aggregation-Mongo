@@ -53,7 +53,7 @@ export const registerUser = async (req, res) => {
 
 export const loginUser = async (req, res) => {
 
-const SECRET_KEY = "adfasdfadfsfa"
+
 
 
   try {
@@ -90,7 +90,7 @@ const SECRET_KEY = "adfasdfadfsfa"
         username: checkIfuserExist.username,
         role: checkIfuserExist.role,
       },
-      SECRET_KEY,
+      process.env.JWT_SECRET,
       {
         expiresIn:"15m",
       }

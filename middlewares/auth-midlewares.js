@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 export const authMiddleware = async (req, res, next)=>{
 
 try {
-    const SECRET_KEY = "adfasdfadfsfa"
 
 const authHeader  = req.headers['authorization'];
 const token = authHeader && authHeader.split(" ")[1];
@@ -17,7 +16,7 @@ if(!token){
 }
 
 
-const verifyToken = jwt.verify(token, SECRET_KEY);
+const verifyToken = jwt.verify(token, process.env.JWT_SECRET);
 if(!verifyToken){
     return res.json({
 
