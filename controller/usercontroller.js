@@ -117,7 +117,7 @@ const SECRET_KEY = "adfasdfadfsfa"
 export const ChangePassword = async (req, res)=>{
   try {
     
-const userId = req.user.userInfo.userId;
+const userId = req.userInfo.userId;
 //extract old and new password
 
 const {oldpassword, newPassword}= req.body;
@@ -138,7 +138,7 @@ await user.save();
 
 return res.json({
   message:' Password changed successfully',
-  
+
 })
 
   } catch (error) {
