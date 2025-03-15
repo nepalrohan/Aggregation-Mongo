@@ -1,5 +1,6 @@
 import { uploadToCloudinary } from "../helpers/cloudinary-helper.js";
 import Image from "../models/image.js";
+import fs from 'fs';
 
 export const uploadImage =  async (req, res)=>{
     try {
@@ -25,6 +26,12 @@ export const uploadImage =  async (req, res)=>{
 
         await newlyUploadImage.save();
 
+
+
+//delete file from local storage
+fs.unlinkSync(req.file.path);
+
+
         return res.status(201).json({
             success:true, 
             message:'Image upload successfully',
@@ -35,3 +42,6 @@ export const uploadImage =  async (req, res)=>{
         console.log(error);
     }
 }
+
+
+
