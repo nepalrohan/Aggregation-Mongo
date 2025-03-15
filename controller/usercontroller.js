@@ -110,3 +110,38 @@ const SECRET_KEY = "adfasdfadfsfa"
     console.log(error);
   }
 };
+
+
+
+
+export const ChangePassword = async (req, res)=>{
+  try {
+    
+const userId = req.user.userInfo.userId;
+//extract old and new password
+
+const {oldpassword, newPassword}= req.body;
+
+const user = await User.findById(userId);
+if(!user) return;
+
+const checkOldpassword = await bcrypt.compare(oldpassword, user.password)
+if(!checkOldpassword){
+  return res.json({
+    message:'Old paswod is not incorrect'
+  })
+}
+const hashednewpassword = await bcrypt.hash(newPassword, 10);
+
+user.password = hashednewpassword;
+await user.save();
+
+return res.json({
+  message:' Password changed successfully',
+  
+})
+
+  } catch (error) {
+    console.log(error)
+  }
+}
